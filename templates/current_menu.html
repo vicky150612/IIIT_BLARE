@@ -10,7 +10,6 @@
 
 <body>
     <div class="container">
-        <!-- Tab Navigation -->
         <div class="tab-nav" role="tablist" aria-label="Select a day">
             
             <button class="tab-button" role="tab" aria-controls="monday-menu" aria-selected="false"
@@ -50,7 +49,6 @@
             
         </div>
 
-        <!-- Content Area -->
         <div class="content-area">
             
             <div class="day-header" id="monday-header">
@@ -61,7 +59,7 @@
                     <h3>Breakfast</h3>
                     <ul>
                         
-                        <li>Idly</li>
+                        <li>Dosa</li>
                         
                         <li>Medu Vada</li>
                         
@@ -709,9 +707,7 @@
         const dayHeaders = document.querySelectorAll('.day-header');
         const menuContents = document.querySelectorAll('.menu-content');
 
-        // Show day logic
         function showDay(day) {
-            // Remove active states
             tabButtons.forEach(button => {
                 button.classList.remove('active');
                 button.setAttribute('aria-selected', 'false');
@@ -722,7 +718,6 @@
                 content.style.opacity = 0;
             });
 
-            // Set new active states
             const activeButton = document.querySelector(`.tab-button[data-day="${day}"]`);
             const activeHeader = document.getElementById(`${day}-header`);
             const activeMenu = document.getElementById(`${day}-menu`);
@@ -738,7 +733,6 @@
             localStorage.setItem('activeDay', day);
         }
 
-        // Add event listeners
         tabButtons.forEach(button => {
             button.addEventListener('click', () => showDay(button.dataset.day));
             button.addEventListener('keypress', e => {
@@ -748,7 +742,6 @@
             });
         });
 
-        // Load previously selected or current day
         window.addEventListener('load', () => {
             const savedDay = localStorage.getItem('activeDay');
             const today = new Date().toLocaleString('en-US', { weekday: 'long' }).toLowerCase();
